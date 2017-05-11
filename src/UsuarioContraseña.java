@@ -75,10 +75,6 @@ public class UsuarioContraseña {
 
 				if (txtUser.getText().equals("Admin") && clavedef.equals("12345")){
 
-
-				                   
-
-
 				                    JOptionPane.showMessageDialog(null, "Bienvenido\n"
 				                    + "Usuario y Contraseña Correctos",   "Bienvenid@",
 				                    JOptionPane.INFORMATION_MESSAGE);
