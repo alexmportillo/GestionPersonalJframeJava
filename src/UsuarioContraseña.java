@@ -76,7 +76,7 @@ public class UsuarioContraseña {
 				if (txtUser.getText().equals("Admin") && clavedef.equals("12345")){
 
 
-				                    //this.dispose();
+				                   
 
 
 				                    JOptionPane.showMessageDialog(null, "Bienvenido\n"
