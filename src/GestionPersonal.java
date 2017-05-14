@@ -16,6 +16,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class GestionPersonal {
 
@@ -24,7 +26,7 @@ public class GestionPersonal {
 	private JTextField textField_1;
 	private JTextField textField_3;
 	private JTextField textField_2;
-
+	private JLabel labelSueldo;
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -102,11 +104,7 @@ public class GestionPersonal {
 		rdbtnMujer.setBounds(139, 105, 71, 23);
 		frame.getContentPane().add(rdbtnMujer);
 		
-		JSlider slider = new JSlider();
-		slider.setMaximum(10000);
-		slider.setPaintTicks(true);
-		slider.setBounds(403, 94, 123, 23);
-		frame.getContentPane().add(slider);
+		
 		
 		JList list = new JList();
 		list.setModel(new AbstractListModel() {
@@ -126,7 +124,7 @@ public class GestionPersonal {
 		frame.getContentPane().add(lblPuestoEnLa);
 		
 		JLabel lblNewLabel = new JLabel("Sueldo (0-10000)");
-		lblNewLabel.setBounds(290, 97, 103, 14);
+		lblNewLabel.setBounds(264, 105, 103, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblComentarios = new JLabel("Comentarios");
@@ -147,16 +145,29 @@ public class GestionPersonal {
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("50 \u20AC al mes");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1.setBounds(413, 136, 105, 14);
-		frame.getContentPane().add(lblNewLabel_1);
-		
 		JButton btnEstaDeVacaciones = new JButton("Esta de Vacaciones");
 		btnEstaDeVacaciones.setBackground(SystemColor.activeCaption);
 		btnEstaDeVacaciones.setEnabled(false);
 		btnEstaDeVacaciones.setBounds(341, 38, 185, 47);
 		frame.getContentPane().add(btnEstaDeVacaciones);
+		
+		JSlider sliders = new JSlider();
+		sliders.setPaintLabels(true);
+		sliders.setPaintTicks(true);
+		sliders.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				labelSueldo.setText("El valor es:"+sliders.getValue());
+			}
+		});
+		sliders.setMajorTickSpacing(100);
+		sliders.setMinimum(50);
+		sliders.setMaximum(1000);
+		sliders.setBounds(348, 105, 225, 43);
+		frame.getContentPane().add(sliders);
+		
+		JLabel labelSueldo = new JLabel("New label");
+		labelSueldo.setBounds(417, 159, 46, 14);
+		frame.getContentPane().add(labelSueldo);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setToolTipText("");
