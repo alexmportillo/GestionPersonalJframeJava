@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
@@ -101,6 +102,7 @@ public class GestionPersonal {
 		frame.getContentPane().add(lblApellidos);
 		
 		JRadioButton hombre = new JRadioButton("Hombre");
+		hombre.setSelected(true);
 		hombre.setBounds(30, 105, 88, 23);
 		frame.getContentPane().add(hombre);
 		
@@ -128,7 +130,7 @@ public class GestionPersonal {
 		frame.getContentPane().add(lblPuestoEnLa);
 		
 		JLabel lblNewLabel = new JLabel("Sueldo (0-10000)");
-		lblNewLabel.setBounds(264, 105, 103, 14);
+		lblNewLabel.setBounds(286, 140, 103, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblComentarios = new JLabel("Comentarios");
@@ -136,6 +138,28 @@ public class GestionPersonal {
 		frame.getContentPane().add(lblComentarios);
 		
 		JButton crearBut = new JButton("Crear");
+		crearBut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String aux=nombre.getText();
+				String aux2=apellidos.getText();
+				if(aux.length()==0){
+					JOptionPane.showMessageDialog(null, "Falta el nombre\n"
+		                    + "Por favor ingrese un nombre"+
+		                    JOptionPane.ERROR_MESSAGE);
+				}
+				if(aux2.length()==0){
+					JOptionPane.showMessageDialog(null, "Falta los apellidos\n"
+		                    + "Por favor ingrese los apellidos"+
+		                    JOptionPane.ERROR_MESSAGE);
+				
+			}
+				if((hombre.isSelected()==false)&&(mujer.isSelected()==false)){
+					JOptionPane.showMessageDialog(null, "Selecciona el sexo\n"
+		                    + "Por favor seleccione Hombre o Mujer"+
+		                    JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		crearBut.setBackground(SystemColor.inactiveCaption);
 		crearBut.setBounds(82, 304, 151, 43);
 		frame.getContentPane().add(crearBut);
@@ -147,13 +171,13 @@ public class GestionPersonal {
 		JButton btnEstaDeVacaciones = new JButton("Esta de Vacaciones");
 		btnEstaDeVacaciones.setBackground(SystemColor.activeCaption);
 		btnEstaDeVacaciones.setEnabled(false);
-		btnEstaDeVacaciones.setBounds(341, 38, 185, 47);
+		btnEstaDeVacaciones.setBounds(363, 73, 185, 47);
 		frame.getContentPane().add(btnEstaDeVacaciones);
 		
 		
 		
 		JLabel lsueldo = new JLabel("\u20AC al mes");
-		lsueldo.setBounds(384, 149, 94, 14);
+		lsueldo.setBounds(427, 163, 94, 14);
 		frame.getContentPane().add(lsueldo);
 		
 		JSlider slider = new JSlider();
@@ -163,7 +187,7 @@ public class GestionPersonal {
 		lsueldo.setText(slider.getValue()+"€ al mes");
 			}
 		});
-		slider.setBounds(351, 105, 200, 23);
+		slider.setBounds(373, 140, 200, 23);
 		frame.getContentPane().add(slider);
 		
 		JSpinner spinner = new JSpinner(new SpinnerDateModel());
@@ -171,6 +195,28 @@ public class GestionPersonal {
 		frame.getContentPane().add(spinner);
 		SimpleDateFormat model = new SimpleDateFormat("dd/MM/yy");
 		spinner.setEditor(new JSpinner.DateEditor(spinner, model.toPattern()));
+		
+		JButton izq = new JButton("<");
+		izq.setBounds(377, 9, 41, 47);
+		frame.getContentPane().add(izq);
+		
+		JButton dere = new JButton(">");
+		dere.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		dere.setBounds(500, 9, 41, 47);
+		frame.getContentPane().add(dere);
+		
+		JLabel elegir = new JLabel(" de");
+		elegir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		elegir.setBounds(448, 11, 30, 45);
+		frame.getContentPane().add(elegir);
+		
+		JLabel GPModoLeer = new JLabel("Gesti\u00F3n de Personal  - Modo Leer");
+		GPModoLeer.setFont(new Font("Tahoma", Font.BOLD, 14));
+		GPModoLeer.setBounds(10, 11, 249, 14);
+		frame.getContentPane().add(GPModoLeer);
 		
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -183,6 +229,7 @@ public class GestionPersonal {
 		JMenuItem mntmModoCrear = new JMenuItem("Modo Crear");
 		mntmModoCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				GPModoLeer.setVisible(false);
 				nombre.setEnabled(true);
 				apellidos.setEnabled(true);
 				hombre.setEnabled(true);
@@ -190,8 +237,14 @@ public class GestionPersonal {
 				list.setEnabled(true);
 				crearBut.setEnabled(true);
 				comment.setEnabled(true);
-				
+				spinner.setEnabled(true);
 				slider.setEnabled(true);
+				crearBut.setVisible(true);
+				izq.setVisible(false);
+				dere.setVisible(false);
+				elegir.setVisible(false);
+				lblGestinDePersonal.setVisible(true);
+				
 			}
 		});
 		mnModo.add(mntmModoCrear);
@@ -199,7 +252,7 @@ public class GestionPersonal {
 		JMenuItem mntmModoLeer = new JMenuItem("Modo Leer");
 		mntmModoLeer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblGestinDePersonal.setVisible(false);
 				nombre.setEnabled(false);
 				apellidos.setEnabled(false);
 				hombre.setEnabled(false);
@@ -207,8 +260,14 @@ public class GestionPersonal {
 				list.setEnabled(false);
 				crearBut.setEnabled(false);
 				comment.setEnabled(false);
-				
+				spinner.setEnabled(false);
 				slider.setEnabled(false);
+				crearBut.setVisible(false);
+				izq.setVisible(true);
+				dere.setVisible(true);
+				elegir.setVisible(true);
+				GPModoLeer.setVisible(true);
+				
 				
 			}
 		});
