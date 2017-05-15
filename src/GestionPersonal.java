@@ -234,6 +234,7 @@ public class GestionPersonal {
 				hombre.setSelected(false);
 				list.clearSelection();
 				comment.setText(" ");
+				slider.setValue(0);
 				
 			}
 		});
