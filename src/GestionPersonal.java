@@ -158,6 +158,12 @@ public class GestionPersonal {
 		                    + "Por favor seleccione Hombre o Mujer"+
 		                    JOptionPane.ERROR_MESSAGE);
 				}
+				
+				if(list.isSelectionEmpty()==true){
+					JOptionPane.showMessageDialog(null, "Selecciona Puesto\n"
+		                    + "Por favor seleccione el puesto correspondiente"+
+		                    JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		crearBut.setBackground(SystemColor.inactiveCaption);
