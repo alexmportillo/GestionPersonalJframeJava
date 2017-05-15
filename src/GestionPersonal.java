@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
+import javax.swing.SpinnerDateModel;
 import javax.swing.JSlider;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
@@ -18,14 +19,17 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.awt.event.ActionEvent;
+import javax.swing.JSpinner;
 
 public class GestionPersonal {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_2;
+	private JTextField nombre;
+	private JTextField apellidos;
+	private JTextField comment;
 	private JLabel labelSueldo;
 	public JFrame getFrame() {
 		return frame;
@@ -73,20 +77,20 @@ public class GestionPersonal {
 		lblGestinDePersonal.setBounds(10, 11, 249, 14);
 		frame.getContentPane().add(lblGestinDePersonal);
 		
-		textField = new JTextField();
-		textField.setBounds(106, 36, 86, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		nombre = new JTextField();
+		nombre.setBounds(106, 36, 86, 20);
+		frame.getContentPane().add(nombre);
+		nombre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(106, 67, 86, 20);
-		frame.getContentPane().add(textField_1);
+		apellidos = new JTextField();
+		apellidos.setColumns(10);
+		apellidos.setBounds(106, 67, 86, 20);
+		frame.getContentPane().add(apellidos);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(338, 255, 213, 109);
-		frame.getContentPane().add(textField_3);
+		comment = new JTextField();
+		comment.setColumns(10);
+		comment.setBounds(338, 255, 213, 109);
+		frame.getContentPane().add(comment);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(30, 39, 46, 14);
@@ -96,13 +100,13 @@ public class GestionPersonal {
 		lblApellidos.setBounds(30, 70, 66, 14);
 		frame.getContentPane().add(lblApellidos);
 		
-		JRadioButton rdbtnHombre = new JRadioButton("Hombre");
-		rdbtnHombre.setBounds(30, 105, 88, 23);
-		frame.getContentPane().add(rdbtnHombre);
+		JRadioButton hombre = new JRadioButton("Hombre");
+		hombre.setBounds(30, 105, 88, 23);
+		frame.getContentPane().add(hombre);
 		
-		JRadioButton rdbtnMujer = new JRadioButton("Mujer");
-		rdbtnMujer.setBounds(139, 105, 71, 23);
-		frame.getContentPane().add(rdbtnMujer);
+		JRadioButton mujer = new JRadioButton("Mujer");
+		mujer.setBounds(139, 105, 71, 23);
+		frame.getContentPane().add(mujer);
 		
 		
 		
@@ -131,19 +135,14 @@ public class GestionPersonal {
 		lblComentarios.setBounds(338, 236, 80, 14);
 		frame.getContentPane().add(lblComentarios);
 		
-		JButton btnCrear = new JButton("Crear");
-		btnCrear.setBackground(SystemColor.inactiveCaption);
-		btnCrear.setBounds(82, 304, 151, 43);
-		frame.getContentPane().add(btnCrear);
+		JButton crearBut = new JButton("Crear");
+		crearBut.setBackground(SystemColor.inactiveCaption);
+		crearBut.setBounds(82, 304, 151, 43);
+		frame.getContentPane().add(crearBut);
 		
 		JLabel lblAntigedad = new JLabel("Antig\u00FCedad");
 		lblAntigedad.setBounds(47, 259, 71, 14);
 		frame.getContentPane().add(lblAntigedad);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(128, 255, 105, 23);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
 		
 		JButton btnEstaDeVacaciones = new JButton("Esta de Vacaciones");
 		btnEstaDeVacaciones.setBackground(SystemColor.activeCaption);
@@ -167,6 +166,11 @@ public class GestionPersonal {
 		slider.setBounds(351, 105, 200, 23);
 		frame.getContentPane().add(slider);
 		
+		JSpinner spinner = new JSpinner(new SpinnerDateModel());
+		spinner.setBounds(116, 255, 117, 20);
+		frame.getContentPane().add(spinner);
+		SimpleDateFormat model = new SimpleDateFormat("dd/MM/yy");
+		spinner.setEditor(new JSpinner.DateEditor(spinner, model.toPattern()));
 		
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -177,12 +181,48 @@ public class GestionPersonal {
 		menuBar.add(mnModo);
 		
 		JMenuItem mntmModoCrear = new JMenuItem("Modo Crear");
+		mntmModoCrear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nombre.setEnabled(true);
+				apellidos.setEnabled(true);
+				hombre.setEnabled(true);
+				mujer.setEnabled(true);
+				list.setEnabled(true);
+				crearBut.setEnabled(true);
+				comment.setEnabled(true);
+				
+				slider.setEnabled(true);
+			}
+		});
 		mnModo.add(mntmModoCrear);
 		
 		JMenuItem mntmModoLeer = new JMenuItem("Modo Leer");
+		mntmModoLeer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				nombre.setEnabled(false);
+				apellidos.setEnabled(false);
+				hombre.setEnabled(false);
+				mujer.setEnabled(false);
+				list.setEnabled(false);
+				crearBut.setEnabled(false);
+				comment.setEnabled(false);
+				
+				slider.setEnabled(false);
+				
+			}
+		});
 		mnModo.add(mntmModoLeer);
 		
 		JMenu mnNewMenu = new JMenu("Ayuda");
 		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit( 0 ); 
+			}
+		});
+		mnNewMenu.add(mntmSalir);
 	}
 }
