@@ -151,23 +151,23 @@ public class GestionPersonal {
 		btnEstaDeVacaciones.setBounds(341, 38, 185, 47);
 		frame.getContentPane().add(btnEstaDeVacaciones);
 		
-		JSlider sliders = new JSlider();
-		sliders.setPaintLabels(true);
-		sliders.setPaintTicks(true);
-		sliders.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				labelSueldo.setText("El valor es:"+sliders.getValue());
+		
+		
+		JLabel lsueldo = new JLabel("\u20AC al mes");
+		lsueldo.setBounds(384, 149, 94, 14);
+		frame.getContentPane().add(lsueldo);
+		
+		JSlider slider = new JSlider();
+		slider.setPaintTicks(true);
+		slider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+		lsueldo.setText(slider.getValue()+"€ al mes");
 			}
 		});
-		sliders.setMajorTickSpacing(100);
-		sliders.setMinimum(50);
-		sliders.setMaximum(1000);
-		sliders.setBounds(348, 105, 225, 43);
-		frame.getContentPane().add(sliders);
+		slider.setBounds(351, 105, 200, 23);
+		frame.getContentPane().add(slider);
 		
-		JLabel labelSueldo = new JLabel("New label");
-		labelSueldo.setBounds(417, 159, 46, 14);
-		frame.getContentPane().add(labelSueldo);
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setToolTipText("");
