@@ -167,7 +167,7 @@ public class GestionPersonal {
 			}
 		});
 		crearBut.setBackground(SystemColor.inactiveCaption);
-		crearBut.setBounds(82, 304, 151, 43);
+		crearBut.setBounds(82, 288, 151, 43);
 		frame.getContentPane().add(crearBut);
 		
 		JLabel lblAntigedad = new JLabel("Antig\u00FCedad");
@@ -224,6 +224,23 @@ public class GestionPersonal {
 		GPModoLeer.setBounds(10, 11, 249, 14);
 		frame.getContentPane().add(GPModoLeer);
 		
+		JButton Limpiar = new JButton("Limpiar");
+		Limpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	
+				nombre.setText("");
+				apellidos.setText("");
+				hombre.setSelected(false);
+				hombre.setSelected(false);
+				list.clearSelection();
+				comment.setText(" ");
+				
+			}
+		});
+		Limpiar.setBackground(SystemColor.inactiveCaption);
+		Limpiar.setBounds(82, 342, 151, 43);
+		frame.getContentPane().add(Limpiar);
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setToolTipText("");
@@ -249,6 +266,7 @@ public class GestionPersonal {
 				izq.setVisible(false);
 				dere.setVisible(false);
 				elegir.setVisible(false);
+				Limpiar.setVisible(true);
 				lblGestinDePersonal.setVisible(true);
 				
 			}
@@ -272,6 +290,7 @@ public class GestionPersonal {
 				izq.setVisible(true);
 				dere.setVisible(true);
 				elegir.setVisible(true);
+				Limpiar.setVisible(false);
 				GPModoLeer.setVisible(true);
 				
 				
