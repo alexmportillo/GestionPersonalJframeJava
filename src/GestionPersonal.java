@@ -22,6 +22,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 
@@ -32,6 +33,7 @@ public class GestionPersonal {
 	private JTextField apellidos;
 	private JTextField comment;
 	private JLabel labelSueldo;
+	
 	public JFrame getFrame() {
 		return frame;
 	}
