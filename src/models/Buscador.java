@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class Buscador {
 
@@ -44,29 +48,35 @@ public class Buscador {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JCheckBox chckbxNombre = new JCheckBox("Nombre");
-		chckbxNombre.setBounds(26, 7, 88, 23);
-		frame.getContentPane().add(chckbxNombre);
+		JCheckBox checkNombre = new JCheckBox("Nombre");
+		checkNombre.setBounds(31, 38, 88, 23);
+		frame.getContentPane().add(checkNombre);
 		
-		JCheckBox chckbxPuesto = new JCheckBox("Sueldo");
-		chckbxPuesto.setBounds(116, 7, 79, 23);
-		frame.getContentPane().add(chckbxPuesto);
+		JCheckBox checkSueldo = new JCheckBox("Sueldo");
+		checkSueldo.setBounds(121, 38, 79, 23);
+		frame.getContentPane().add(checkSueldo);
 		
-		JCheckBox chckbxPuesto_1 = new JCheckBox("Puesto");
-		chckbxPuesto_1.setBounds(197, 7, 69, 23);
-		frame.getContentPane().add(chckbxPuesto_1);
+		JCheckBox checkPuesto = new JCheckBox("Puesto");
+		checkPuesto.setBounds(202, 38, 69, 23);
+		frame.getContentPane().add(checkPuesto);
 		
-		JCheckBox chckbxAntigedad = new JCheckBox("Antig\u00FCedad");
-		chckbxAntigedad.setBounds(285, 7, 96, 23);
-		frame.getContentPane().add(chckbxAntigedad);
+		JCheckBox checkAntig = new JCheckBox("Antig\u00FCedad");
+		checkAntig.setBounds(290, 38, 96, 23);
+		frame.getContentPane().add(checkAntig);
 		
 		textField = new JTextField();
-		textField.setBounds(92, 46, 218, 37);
+		textField.setBounds(97, 77, 218, 37);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(155, 94, 89, 23);
+		btnBuscar.setBounds(160, 125, 89, 23);
 		frame.getContentPane().add(btnBuscar);
+		
+		JLabel lblBuscar = new JLabel("Buscar");
+		lblBuscar.setIcon(null);
+		lblBuscar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblBuscar.setBounds(10, 0, 109, 31);
+		frame.getContentPane().add(lblBuscar);
 	}
 }
