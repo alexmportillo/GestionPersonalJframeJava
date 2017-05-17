@@ -8,12 +8,9 @@ public class Usuarios {
 	protected String sexo;
 	protected String comentario;
 	protected int antiguedad;
-	
-	
-	
 	public Usuarios(String nombre, String apellido, float sueldo, String vacaciones, String sexo, String comentario,
 			int antiguedad) {
-		super();
+
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.sueldo = sueldo;
@@ -21,8 +18,6 @@ public class Usuarios {
 		this.sexo = sexo;
 		this.comentario = comentario;
 		this.antiguedad = antiguedad;
-		
-		
 	}
 	public String getNombre() {
 		return nombre;
@@ -42,7 +37,7 @@ public class Usuarios {
 	public void setSueldo(float sueldo) {
 		this.sueldo = sueldo;
 	}
-	public String getVacaciones() {
+	public String isVacaciones() {
 		return vacaciones;
 	}
 	public void setVacaciones(String vacaciones) {
@@ -66,14 +61,13 @@ public class Usuarios {
 	public void setAntiguedad(int antiguedad) {
 		this.antiguedad = antiguedad;
 	}
-	
-	
 	@Override
 	public String toString() {
-		return "Usuarios [nombre=" + nombre + ", apellido=" + apellido + ", sueldo=" + sueldo + ", vacaciones="
+		return "persona [nombre=" + nombre + ", apellido=" + apellido + ", sueldo=" + sueldo + ", vacaciones="
 				+ vacaciones + ", sexo=" + sexo + ", comentario=" + comentario + ", antiguedad=" + antiguedad + "]";
 	}
-
-	
+	public String getVacaciones() {
+		return vacaciones;
+	}
 	
 }

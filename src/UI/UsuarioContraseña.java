@@ -1,10 +1,10 @@
+package UI;
+import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -82,7 +82,7 @@ public class UsuarioContraseña {
 
 				                    GestionPersonal GestionPersonal1 = new GestionPersonal();
 
-				                  GestionPersonal1.getFrame().setVisible(true);
+				                    GestionPersonal1.frame2.setVisible(true);
 				                  	frame.dispose();
 
 				            }else {
