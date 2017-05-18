@@ -1,15 +1,15 @@
-package models;
-
+package UI;
+import models.Usuarios;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 public class Buscador {
 
@@ -70,6 +70,13 @@ public class Buscador {
 		textField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+			}
+		});
 		btnBuscar.setBounds(160, 125, 89, 23);
 		frame.getContentPane().add(btnBuscar);
 		
